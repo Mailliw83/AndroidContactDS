@@ -19,13 +19,13 @@ class DetailsContacts : AppCompatActivity() {
         contact = intent.getSerializableExtra("contact") as Contacts
         title = contact.name.first + " " + contact.name.last
 
-        binding.name.text = contact.name.first + " " + contact.name.last
+        binding.name.text = contact.name.first + " " + contact.name.last.uppercase()
         binding.email.text = contact.email
         binding.phone.text = contact.phone
         if (contact.picture.large.isNotEmpty()) {
             Picasso.get().load(contact.picture.large).resize(700, 700).centerCrop().into(binding.photo)
         }
-        binding.adresse.text = contact.location.street.name + " " + contact.location.street.number + " " + contact.location.city + " " + contact.location.postcode
+        binding.adresse.text = contact.location.street.name + " " + contact.location.street.number + " \n" + contact.location.city + " " + contact.location.postcode
         binding.birthday.text = contact.dob.date
     }
 }
